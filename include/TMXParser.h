@@ -15,16 +15,17 @@
 namespace TMX
 {
 
-  class Parser
-  {
-    public:
-      Parser( const char* filename );
-      Parser();
-      virtual ~Parser();
+class Parser
+{
+public:
+    Parser( const char* filename );
+    Parser();
+    virtual ~Parser();
 
-      bool load( const char* filename );
+    bool load( const char* filename );
 
-      struct Map {
+    struct Map
+    {
         std::string version;
         std::string orientation;
         unsigned int width;
@@ -33,28 +34,32 @@ namespace TMX
         unsigned int tileHeight;
         std::string backgroundColor;
         std::map<std::string, std::string> property;
-      };
+    };
 
-      struct Tileset {
+    struct Tileset
+    {
         unsigned int firstGID;
         std::string source;
-      };
+    };
 
-      struct Data {
+    struct Data
+    {
         std::string encoding;
         std::string compression;
         std::string contents;
-      };
+    };
 
-      struct TileLayer {
+    struct TileLayer
+    {
         std::string name;
         bool visible;
         float opacity;
         Data data;
         std::map<std::string, std::string> property;
-      };
+    };
 
-      struct Object {
+    struct Object
+    {
         std::string name;
         std::string type;
         int x;
@@ -64,38 +69,41 @@ namespace TMX
         unsigned int gid;
         bool visible;
         std::map<std::string, std::string> property;
-      };
+    };
 
-      struct ObjectGroup {
+    struct ObjectGroup
+    {
         std::string color;
         std::string name;
         float opacity;
         bool visible;
         std::map<std::string, Object> object;
         std::map<std::string, std::string> property;
-      };
+    };
 
-      struct Image {
+    struct Image
+    {
         std::string source;
         std::string transparencyColor;
-      };
+    };
 
-      struct ImageLayer {
+    struct ImageLayer
+    {
         std::string name;
         float opacity;
         bool visible;
         std::map<std::string, std::string> property;
         Image image;
-      };
+    };
 
-      Map mapInfo;
-      std::vector<Tileset> tilesetList;
-      std::map<std::string, TileLayer> tileLayer;
-      std::map<std::string, ObjectGroup> objectGroup;
-      std::map<std::string, ImageLayer> imageLayer;
-    protected:
-    private:
-  };
+    Map mapInfo;
+    std::vector<Tileset> tilesetList;
+    std::map<std::string, TileLayer> tileLayer;
+    std::map<std::string, ObjectGroup> objectGroup;
+    std::map<std::string, ImageLayer> imageLayer;
+protected:
+private:
+};
 
 }
 #endif // TMXPARSER_H
